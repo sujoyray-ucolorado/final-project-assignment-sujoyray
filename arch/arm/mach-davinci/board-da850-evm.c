@@ -214,7 +214,13 @@ static struct mtd_partition da850_evm_nandflash_partition[] = {
 	{
 		.name		= "kernel",
 		.offset		= 0x200000,
-		.size		= SZ_2M,
+		.size		= SZ_4M,
+		.mask_flags	= 0,
+	},	
+	{
+		.name		= "Device Tree",
+		.offset		= 0x1300000,
+		.size		= SZ_1M,
 		.mask_flags	= 0,
 	},
 	{
@@ -239,7 +245,7 @@ static struct davinci_nand_pdata da850_evm_nandflash_data = {
 	.core_chipsel	= 1,
 	.parts		= da850_evm_nandflash_partition,
 	.nr_parts	= ARRAY_SIZE(da850_evm_nandflash_partition),
-	.engine_type	= NAND_ECC_ENGINE_TYPE_ON_HOST,
+	.engine_type    = NAND_ECC_ENGINE_TYPE_ON_HOST,
 	.ecc_bits	= 4,
 	.bbt_options	= NAND_BBT_USE_FLASH,
 	.timing		= &da850_evm_nandflash_timing,
@@ -1516,6 +1522,8 @@ static __init void da850_evm_init(void)
 	ret = da8xx_register_spi_bus(1, ARRAY_SIZE(da850evm_spi_info));
 	if (ret)
 		pr_warn("%s: SPI 1 registration failed: %d\n", __func__, ret);
+
+    da850_evm_setup_nor_nand();
 
 	ret = da850_register_sata(DA850EVM_SATA_REFCLKPN_RATE);
 	if (ret)
