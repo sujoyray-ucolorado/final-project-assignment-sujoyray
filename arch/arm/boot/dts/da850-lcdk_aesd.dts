@@ -374,7 +374,7 @@
 				};
 				partition@5 {
 					label = "rootfs";
-					reg = <0x1400000 0x1800000>;
+					reg = <0x1400000 0x6C00000>; 
 				};
 	
 	
