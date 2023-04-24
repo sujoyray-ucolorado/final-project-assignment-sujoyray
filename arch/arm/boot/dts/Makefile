@@ -175,7 +175,8 @@ dtb-$(CONFIG_ARCH_DAVINCI) += \
 	da850-lcdk.dtb \
 	da850-enbw-cmc.dtb \
 	da850-evm.dtb \
-	da850-lego-ev3.dtb
+	da850-lego-ev3.dtb \
+	da850-lcdk_aesd.dtb
 dtb-$(CONFIG_ARCH_DIGICOLOR) += \
 	cx92755_equinox.dtb
 dtb-$(CONFIG_ARCH_EFM32) += \
